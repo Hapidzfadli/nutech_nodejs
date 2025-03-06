@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
   });
 app.use('/', require('./routes/membershipRoutes'));
 app.use('/', require('./routes/informationRoutes'));
+app.use('/', require('./routes/transactionRoutes'));
 
 // Error handler
 app.use((err, req, res, next) => {
