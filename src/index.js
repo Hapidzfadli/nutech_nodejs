@@ -1,13 +1,22 @@
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
 const express = require('express');
 const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT || 3000;
+const uploadsDir = path.resolve(__dirname, '../uploads');
 
 app.use(cors());  
 app.use(express.json());
+
+if (!fs.existsSync(uploadsDir)) {
+    fs.mkdirSync(uploadsDir);
+}
+  
+app.use('/uploads', express.static(uploadsDir));
 
 // Routes
 app.get('/', (req, res) => {
