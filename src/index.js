@@ -23,7 +23,9 @@ app.get('/', (req, res) => {
     res.json({ message: 'NuTech PPOB API' });
   });
 app.use('/', require('./routes/membershipRoutes'));
+app.use('/', require('./routes/informationRoutes'));
 
+// Error handler
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).json({
